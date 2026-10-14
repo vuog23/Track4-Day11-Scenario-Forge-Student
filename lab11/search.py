@@ -10,17 +10,28 @@ from avsim import space
 
 def cem_update(Z, Bn, score, prev: dict, rho: float = 0.1, smooth: float = 0.7, min_std: float = 0.25,
                p_clip=(0.03, 0.97)) -> dict:
-    """TODO 5. One cross-entropy step. Keep the elite = the top ceil(rho * n) rows by score (at least 2;
-    higher score = more dangerous; on equal scores the earlier row wins, i.e. np.argsort(-score, kind="stable")),
-    then return a new proposal dict:
+    """Update a Gaussian/Bernoulli proposal from the highest-scoring elite samples."""
+    Z = np.asarray(Z, dtype=float)
+    Bn = np.asarray(Bn, dtype=float)
+    score = np.asarray(score, dtype=float).reshape(-1)
+    n = score.size
+    if Z.shape[0] != n or Bn.shape[0] != n:
+        raise ValueError("Z, Bn, and score must have the same number of rows")
+    if n == 0:
+        return dict(mean=np.array(prev["mean"], copy=True), std=np.array(prev["std"], copy=True),
+                    p_bin=np.array(prev["p_bin"], copy=True), level=prev["level"])
 
-      mean  = smooth * elite mean + (1 - smooth) * prev["mean"]           (per continuous coordinate)
-      std   = max(min_std, smooth * elite std + (1 - smooth) * prev["std"])
-      p_bin = clip(smooth * elite frequency + (1 - smooth) * prev["p_bin"], *p_clip)  (per binary coordinate)
-      level = the lowest score inside the elite (how dangerous the elite already is)
+    elite_n = min(n, max(2, int(math.ceil(rho * n))))
+    elite_idx = np.argsort(-score, kind="stable")[:elite_n]
+    elite_z = Z[elite_idx]
+    elite_b = Bn[elite_idx]
 
-    Why the floors: a std that collapses to 0 or a probability of exactly 0/1 makes importance weights explode."""
-    raise NotImplementedError("TODO 5: cem_update")
+    mean = smooth * elite_z.mean(axis=0) + (1.0 - smooth) * np.asarray(prev["mean"])
+    std = np.maximum(min_std, smooth * elite_z.std(axis=0) + (1.0 - smooth) * np.asarray(prev["std"]))
+    p_bin = smooth * elite_b.mean(axis=0) + (1.0 - smooth) * np.asarray(prev["p_bin"])
+    p_bin = np.clip(p_bin, p_clip[0], p_clip[1])
+    level = float(np.min(score[elite_idx]))
+    return dict(mean=mean, std=std, p_bin=p_bin, level=level)
 
 
 # ---------------------------------------------------------------- given

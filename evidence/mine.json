@@ -1,0 +1,182 @@
+{
+ "file": "hazard.json",
+ "hazards": [
+  {
+   "who": "L1",
+   "decel": 6.8,
+   "dur": 2.2,
+   "t0": 0.0,
+   "trig": 32.0,
+   "type": "brake"
+  }
+ ],
+ "space": {
+  "h0_decel": [
+   6.0,
+   7.5
+  ],
+  "h0_dur": [
+   1.2,
+   3.0
+  ],
+  "h0_t0": [
+   0.0,
+   1.5
+  ],
+  "h0_trig": [
+   24.0,
+   42.0
+  ]
+ },
+ "world": "town",
+ "exposure": 0.05,
+ "why": "Scenario: L1 makes a hard stop while the ego follows in the same lane. The ranges are within the simulator's braking, time, and distance limits; h0_decel stays below dry-road mu*g. Exposure 0.05 per trip is an illustrative prior, not a measured incidence rate. Its scale is anchored to the SHRP2 NDS finding that a median driver experienced about one 0.3g braking event per mile on low-speed neighborhood roads; this severe close-following subset should be rarer and needs local fleet naturalistic data to calibrate. Source: Gibran Ali, Characterizing Human Driving Behavior Through an Analysis of Naturalistic Driving Data, Virginia Tech dissertation (2023), https://vtechworks.lib.vt.edu/items/6bb2f65a-7a19-4a6d-a9e1-717ad5f5b5fb.",
+ "exact": {
+  "planner": []
+ },
+ "infeasible": 464,
+ "accepted": 0.6906666666666667,
+ "conditional_on": "your town's traffic",
+ "baseline": {
+  "n": 1036,
+  "crashes": 3,
+  "avoidable": 0,
+  "unavoidable": 0,
+  "unattributed": 3,
+  "low_speed": 0,
+  "avoidable_foreknown": 0,
+  "overlap_at_start": 0,
+  "by_hazard": {
+   "unattributed": 3
+  },
+  "examples": [
+   {
+    "params": {
+     "cutT0": 4.946194396187376,
+     "cutDur": 5.510795412607144,
+     "cutV": 13.538202079928054,
+     "cutDs": 3.272938517619796,
+     "pedT0": 13.588981153284507,
+     "pedV": 1.707277716855251,
+     "busGo": 12.115125836671073,
+     "tgT": 0.6899223184209465,
+     "cutGap": 5.266908208397755,
+     "pedGap": 5.272947052253311,
+     "mu": 0.8,
+     "pedLook": 1,
+     "cutBrake": 0.0,
+     "civil": true,
+     "h0_decel": 6.70595403916307,
+     "h0_dur": 1.256289528625653,
+     "h0_t0": 0.09952739525717264,
+     "h0_trig": 41.98536557096854
+    },
+    "kind": "unattributed",
+    "low_speed": false,
+    "other": "C2",
+    "t": 15.15,
+    "v_ego": 3.918926954269409,
+    "fire_t": null,
+    "brake_t": null
+   },
+   {
+    "params": {
+     "cutT0": 8.017924300907424,
+     "cutDur": 4.382767530358346,
+     "cutV": 12.724886157685493,
+     "cutDs": -5.049485257247144,
+     "pedT0": 10.722932850822556,
+     "pedV": 1.5711665284672982,
+     "busGo": 15.168324012141976,
+     "tgT": 0.7530107797236896,
+     "cutGap": 4.008763759065733,
+     "pedGap": 3.962137074034864,
+     "mu": 0.8,
+     "pedLook": 0,
+     "cutBrake": 0.0,
+     "civil": true,
+     "h0_decel": 6.718985298272732,
+     "h0_dur": 1.550211088380215,
+     "h0_t0": 1.4392000546505601,
+     "h0_trig": 37.3082738354874
+    },
+    "kind": "unattributed",
+    "low_speed": false,
+    "other": "C2",
+    "t": 15.8,
+    "v_ego": 3.7536256313323975,
+    "fire_t": null,
+    "brake_t": null
+   },
+   {
+    "params": {
+     "cutT0": 10.691417221569175,
+     "cutDur": 4.05174459697884,
+     "cutV": 15.814051772892661,
+     "cutDs": 0.6997782772086385,
+     "pedT0": 9.240353128235661,
+     "pedV": 1.6653419169045571,
+     "busGo": 18.660500963225985,
+     "tgT": 1.0023294856266842,
+     "cutGap": 3.860225871339096,
+     "pedGap": 5.199241237089085,
+     "mu": 0.8,
+     "pedLook": 1,
+     "cutBrake": 0.0,
+     "civil": true,
+     "h0_decel": 6.255466284011529,
+     "h0_dur": 1.3103673667409899,
+     "h0_t0": 1.0343663990340475,
+     "h0_trig": 37.90153742977156
+    },
+    "kind": "unattributed",
+    "low_speed": false,
+    "other": "C2",
+    "t": 14.55,
+    "v_ego": 4.276739597320557,
+    "fire_t": null,
+    "brake_t": null
+   }
+  ],
+  "p": 0.0,
+  "lo": 0.0,
+  "hi": 0.003694408840731127,
+  "per_trip": 0.0,
+  "per_trip_hi": 0.00018472044203655635
+ },
+ "chosen": {
+  "n": 1036,
+  "crashes": 0,
+  "avoidable": 0,
+  "unavoidable": 0,
+  "unattributed": 0,
+  "low_speed": 0,
+  "avoidable_foreknown": 0,
+  "overlap_at_start": 0,
+  "by_hazard": {},
+  "examples": [],
+  "p": 0.0,
+  "lo": 0.0,
+  "hi": 0.003694408840731127,
+  "per_trip": 0.0,
+  "per_trip_hi": 0.00018472044203655635
+ },
+ "_run": {
+  "mssv": "2A202602422",
+  "town": "B",
+  "quick": false,
+  "step": "mine",
+  "salted": false,
+  "budgets": {
+   "replay_n": 400,
+   "mc_n": 3000,
+   "iters": 8,
+   "per_iter": 300,
+   "final_n": 600,
+   "seeds": 3,
+   "fix_n": 400,
+   "progress_n": 256,
+   "mine_n": 1500
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "format": "avsim-studio/1",
+  "ego": "planner",
+  "params": {"mu": 0.8, "civil": true},
+  "policy": {},
+  "hazards": [
+    {
+      "type": "brake",
+      "who": "L1",
+      "decel": 6.8,
+      "dur": 2.2,
+      "t0": 0.0,
+      "trig": 32.0
+    }
+  ],
+  "space": {
+    "h0_decel": [6.0, 7.5],
+    "h0_dur": [1.2, 3.0],
+    "h0_t0": [0.0, 1.5],
+    "h0_trig": [24.0, 42.0]
+  },
+  "exposure": 0.05,
+  "why": "Scenario: L1 makes a hard stop while the ego follows in the same lane. The ranges are within the simulator's braking, time, and distance limits; h0_decel stays below dry-road mu*g. Exposure 0.05 per trip is an illustrative prior, not a measured incidence rate. Its scale is anchored to the SHRP2 NDS finding that a median driver experienced about one 0.3g braking event per mile on low-speed neighborhood roads; this severe close-following subset should be rarer and needs local fleet naturalistic data to calibrate. Source: Gibran Ali, Characterizing Human Driving Behavior Through an Analysis of Naturalistic Driving Data, Virginia Tech dissertation (2023), https://vtechworks.lib.vt.edu/items/6bb2f65a-7a19-4a6d-a9e1-717ad5f5b5fb."
+}
